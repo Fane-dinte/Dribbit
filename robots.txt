@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /f/
+Disallow: /s/
+
+Sitemap: https://dripbox.pages.dev/sitemap.xml

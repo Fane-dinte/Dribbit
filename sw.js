@@ -1,5 +1,5 @@
 // Dripbox service worker: keeps the app shell offline-ready and receives things from Android's Share menu.
-const V = "dripbox-8";
+const V = "dripbox-9";
 const SHELL = ["/", "/manifest.webmanifest", "/icon-192.png"];
 
 self.addEventListener("install", (e) => {

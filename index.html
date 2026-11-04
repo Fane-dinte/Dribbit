@@ -3,7 +3,21 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Dripbox</title>
+<title>Dripbox: your own private AirDrop over the internet</title>
+<meta name="description" content="Dripbox is an open-source, self-hosted private AirDrop. Send text, links and files between your phone, laptop and PC. Runs free on your own Cloudflare account.">
+<link rel="canonical" href="https://dripbox.pages.dev/">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<!-- Search Console: paste the verification tag here -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Dripbox">
+<meta property="og:title" content="Dripbox: your own private AirDrop over the internet">
+<meta property="og:description" content="Dripbox is an open-source, self-hosted private AirDrop. Send text, links and files between your phone, laptop and PC. Runs free on your own Cloudflare account.">
+<meta property="og:url" content="https://dripbox.pages.dev/">
+<meta property="og:image" content="https://dripbox.pages.dev/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebSite", "name": "Dripbox", "alternateName": ["Dripbox AirDrop", "Dripbox private file sharing"], "url": "https://dripbox.pages.dev/"}, {"@type": "SoftwareApplication", "name": "Dripbox", "url": "https://dripbox.pages.dev/", "description": "Dripbox is an open-source, self-hosted private AirDrop. Send text, links and files between your phone, laptop and PC. Runs free on your own Cloudflare account.", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "codeRepository": "https://github.com/Fane-dinte/Dripbox", "license": "https://opensource.org/licenses/MIT", "sameAs": ["https://github.com/Fane-dinte/Dripbox"]}]}</script>
 <meta name="theme-color" content="#f4f1ec" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#141311" media="(prefers-color-scheme: dark)">
 <link rel="manifest" href="/manifest.webmanifest">
@@ -199,6 +213,8 @@ dialog .row { margin-top: 16px; }
   .acts .opt { display: none; }
   .item { padding: 9px; gap: 10px; }
 }
+.seo-text{position:absolute;width:1px;height:1px;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.login .src{display:block;margin-top:22px;font-size:12.5px;color:var(--muted);text-decoration:none}.login .src:hover{color:var(--accent)}
 </style>
 </head>
 <body>
@@ -221,6 +237,7 @@ dialog .row { margin-top: 16px; }
   <symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m6 6 12 12M18 6 6 18"/></symbol>
 </svg>
 
+<div class="seo-text"><h1>Dripbox: your own private AirDrop over the internet</h1><p>Dripbox is a free, open-source, self-hosted private AirDrop. Send text, links, photos and files between your phone, laptop and PC, or share the password with friends. It runs on your own Cloudflare account (Pages + R2), with no server and no subscription.</p><p>Dripbox este un AirDrop privat pe internet, open source: trimiți text, linkuri și fișiere între telefon, laptop și PC, pe propriul tău cont Cloudflare.</p><a href="https://github.com/Fane-dinte/Dripbox">Dripbox on GitHub: source code and setup guide</a></div>
 <div id="login" class="wrap login" hidden>
   <form id="loginForm" autocomplete="on">
     <svg><use href="#i-box"/></svg>
@@ -229,6 +246,7 @@ dialog .row { margin-top: 16px; }
     <input class="field" id="pass" type="password" name="password" autocomplete="current-password" placeholder="Parola" required>
     <button class="btn primary" type="submit">Intră</button>
     <div class="e" id="loginErr"></div>
+    <a class="src" href="https://github.com/Fane-dinte/Dripbox" rel="noopener">Open source · get your own Dripbox</a>
   </form>
 </div>
 
