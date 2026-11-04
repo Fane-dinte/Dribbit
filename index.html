@@ -213,8 +213,15 @@ dialog .row { margin-top: 16px; }
   .acts .opt { display: none; }
   .item { padding: 9px; gap: 10px; }
 }
-.seo-text{position:absolute;width:1px;height:1px;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .login .src{display:block;margin-top:22px;font-size:12.5px;color:var(--muted);text-decoration:none}.login .src:hover{color:var(--accent)}
+#about{max-width:520px;margin:0 auto;padding:12px 24px 90px;font-size:15.5px;line-height:1.75;color:var(--ink)}
+#about h2{font-size:24px;line-height:1.25;margin:0 0 14px;font-weight:700;letter-spacing:-.01em}
+#about h3{font-size:13px;font-weight:600;color:var(--muted);margin:42px 0 8px;letter-spacing:.02em}
+#about p{margin:0 0 14px}#about ul,#about ol{margin:0;padding:0;list-style:none}
+#about li{padding:9px 0;border-bottom:1px solid var(--line)}#about ol{counter-reset:s}#about ol li{counter-increment:s}#about ol li::before{content:counter(s);color:var(--accent);font-weight:700;display:inline-block;width:1.7em}
+#about code{font:13.5px ui-monospace,Menlo,monospace;background:var(--accent-soft);padding:1px 6px;border-radius:5px}
+#about .end{margin-top:34px;font-size:14px;color:var(--muted)}#about a{color:var(--accent)}
+#about[hidden]{display:none}
 </style>
 </head>
 <body>
@@ -237,7 +244,6 @@ dialog .row { margin-top: 16px; }
   <symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m6 6 12 12M18 6 6 18"/></symbol>
 </svg>
 
-<div class="seo-text"><h1>Dribbit: your own private AirDrop over the internet</h1><p>Dribbit is a free, open-source, self-hosted private AirDrop. Send text, links, photos and files between your phone, laptop and PC, or share the password with friends. It runs on your own Cloudflare account (Pages + R2), with no server and no subscription.</p><p>Dribbit este un AirDrop privat pe internet, open source: trimiți text, linkuri și fișiere între telefon, laptop și PC, pe propriul tău cont Cloudflare.</p><a href="https://github.com/Fane-dinte/Dribbit">Dribbit on GitHub: source code and setup guide</a></div>
 <div id="login" class="wrap login" hidden>
   <form id="loginForm" autocomplete="on">
     <svg><use href="#i-box"/></svg>
@@ -246,7 +252,7 @@ dialog .row { margin-top: 16px; }
     <input class="field" id="pass" type="password" name="password" autocomplete="current-password" placeholder="Parola" required>
     <button class="btn primary" type="submit">Intră</button>
     <div class="e" id="loginErr"></div>
-    <a class="src" href="https://github.com/Fane-dinte/Dribbit" rel="noopener">Open source · get your own Dribbit</a>
+    <a class="src" href="#about">What is Dribbit? ↓</a>
   </form>
 </div>
 
@@ -340,6 +346,29 @@ dialog .row { margin-top: 16px; }
   <div class="row"><span class="spacer"></span><button class="btn primary" id="cpOk" type="button">Gata</button></div>
 </dialog>
 <div class="toast" id="toast"></div>
+
+<article id="about" hidden>
+  <h2>A private AirDrop, on your own Cloudflare.</h2>
+  <p>Dribbit moves text, links, photos and files between your phone, laptop and PC. It is open source and free: no server, no database, no subscription.</p>
+  <ul>
+    <li>Files of any size, tested with 5.5 GB</li>
+    <li>Appears in the Android share menu when installed from Chrome</li>
+    <li>Public links that expire after 7 days</li>
+    <li>One password for friends, one for you, and a list of every signed-in device</li>
+    <li>Deletes items after 30 days, unless you pin them</li>
+    <li>Stays inside Cloudflare’s free tier: it stops at 9 GB and 600,000 writes a month</li>
+  </ul>
+  <h3>Get your own in five steps</h3>
+  <ol>
+    <li>Create a private R2 bucket</li>
+    <li>Upload the files to a new Cloudflare Pages project</li>
+    <li>Bind the bucket as <code>BUCKET</code></li>
+    <li>Set the <code>PASS</code> and <code>ADMIN_PASS</code> secrets</li>
+    <li>Redeploy and open it</li>
+  </ol>
+  <p class="end"><a href="https://github.com/Fane-dinte/Dribbit" rel="noopener">Source code and setup guide on GitHub</a> · MIT license</p>
+</article>
+<noscript><style>#about[hidden]{display:block}.login[hidden]{display:grid}</style></noscript>
 
 <script>
 "use strict";
@@ -835,7 +864,7 @@ async function checkOwner() {
 }
 
 // ---------- login
-function showLogin() { $("#app").hidden = true; $("#login").hidden = false; setTimeout(() => $("#pass").focus(), 50); }
+function showLogin() { $("#app").hidden = true; $("#login").hidden = false; $("#about").hidden = false; setTimeout(() => $("#pass").focus(), 50); }
 $("#loginForm").onsubmit = async (e) => {
   e.preventDefault();
   $("#loginErr").textContent = "";
@@ -871,6 +900,7 @@ async function pickupShared() {
 
 async function start() {
   $("#login").hidden = true;
+  $("#about").hidden = true;
   $("#app").hidden = false;
   await refresh();
   if (!$("#app").hidden) {

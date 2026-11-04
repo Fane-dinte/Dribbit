@@ -1,0 +1,7 @@
+# Dribbit
+
+> Dribbit is an open-source, self-hosted private AirDrop over the internet. It moves text, links, photos and files between your own phone, laptop and PC, and runs on your own Cloudflare account (Pages + R2) inside the free tier.
+
+- Source code and setup guide: https://github.com/Fane-dinte/Dribbit
+- License: MIT
+- Not affiliated with Dropbox or Dribbble.
