@@ -1,5 +1,5 @@
 // Dribbit service worker: keeps the app shell offline-ready and receives things from Android's Share menu.
-const V = "dribbit-2";
+const V = "dribbit-3";
 const SHELL = ["/", "/manifest.webmanifest", "/icon-192.png"];
 
 self.addEventListener("install", (e) => {
