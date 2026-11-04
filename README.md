@@ -1,4 +1,4 @@
-<p align="center"><img src="docs/banner.svg" alt="Dripbox" width="100%"></p>
+<p align="center"><img src="docs/banner.svg" alt="Dribbit" width="100%"></p>
 
 <p align="center">
   <img alt="Cloudflare Pages" src="https://img.shields.io/badge/Cloudflare-Pages-F38020?logo=cloudflare&logoColor=white">
@@ -7,7 +7,7 @@
   <img alt="MIT license" src="https://img.shields.io/badge/license-MIT-green">
 </p>
 
-**Dripbox** is a private "AirDrop" over the internet. Send text, links, photos and files between your phone, laptop and PC, and share the password with friends. It all runs in one Cloudflare Worker plus an R2 bucket in **your own account**: no server, no database, no subscription.
+**Dribbit** is a private "AirDrop" over the internet. Send text, links, photos and files between your phone, laptop and PC, and share the password with friends. It all runs in one Cloudflare Worker plus an R2 bucket in **your own account**: no server, no database, no subscription.
 
 ## What it does
 
@@ -36,29 +36,29 @@ You need a Cloudflare account (free). R2 asks for a card on file, but nothing is
 ### Option 1: in the browser
 
 1. **Get the files:** Code → Download ZIP, then unzip. (`README.md` and `docs/` are not needed, but they do no harm.)
-2. **Create the bucket:** Cloudflare → **R2 Object Storage → Create bucket**, named `dripbox`, left private.
-3. **Create the project:** **Workers & Pages → Create → Pages → Upload assets**, name it `dripbox`, drag in the *contents* of the folder (with `_worker.js` at the root, not inside a subfolder) and press **Deploy**.
-4. **Bind the bucket:** project → **Settings → Bindings → Add → R2 bucket**, variable name **`BUCKET`**, bucket `dripbox`.
+2. **Create the bucket:** Cloudflare → **R2 Object Storage → Create bucket**, named `dribbit`, left private.
+3. **Create the project:** **Workers & Pages → Create → Pages → Upload assets**, name it `dribbit`, drag in the *contents* of the folder (with `_worker.js` at the root, not inside a subfolder) and press **Deploy**.
+4. **Bind the bucket:** project → **Settings → Bindings → Add → R2 bucket**, variable name **`BUCKET`**, bucket `dribbit`.
 5. **Set the passwords:** **Settings → Variables and Secrets → Add** (type *Secret*):
    - `PASS`: the password you give to friends.
    - `ADMIN_PASS`: your owner password (different from `PASS`).
    - optionally, as variables: `TTL_DAYS` (default `30`, `0` = never delete) and `LIMIT_GB` (default `9`, max `9.5`).
 6. **Redeploy:** **Deployments → Create deployment** and upload the folder again. Bindings and secrets only apply on the next deploy.
-7. Open `https://dripbox.pages.dev` (or the name you chose), sign in with `ADMIN_PASS` and install it from the browser menu.
+7. Open `https://dribbit.pages.dev` (or the name you chose), sign in with `ADMIN_PASS` and install it from the browser menu.
 
 ### Option 2: from a terminal
 
 ```bash
 npm i -g wrangler
 wrangler login
-wrangler r2 bucket create dripbox
-wrangler pages project create dripbox --production-branch main
-wrangler pages deploy . --project-name dripbox
-wrangler pages secret put PASS --project-name dripbox
-wrangler pages secret put ADMIN_PASS --project-name dripbox
+wrangler r2 bucket create dribbit
+wrangler pages project create dribbit --production-branch main
+wrangler pages deploy . --project-name dribbit
+wrangler pages secret put PASS --project-name dribbit
+wrangler pages secret put ADMIN_PASS --project-name dribbit
 ```
 
-Then bind the bucket in the dashboard (step 4 above: **Settings → Bindings → R2 bucket**, `BUCKET` → `dripbox`) and run `wrangler pages deploy . --project-name dripbox` once more.
+Then bind the bucket in the dashboard (step 4 above: **Settings → Bindings → R2 bucket**, `BUCKET` → `dribbit`) and run `wrangler pages deploy . --project-name dribbit` once more.
 
 ### Run it locally
 
@@ -73,11 +73,11 @@ Open `http://localhost:8788`. Files are kept in a simulated R2 on disk.
 - `_worker.js` is the whole API (Cloudflare Pages, *advanced mode*). Everything else is static: `index.html` (the entire app), `sw.js`, `manifest.webmanifest` and icons.
 - In R2: `_index.json` (the item list, the write counter and pending multipart reservations, updated with compare-and-swap on the etag), `_sessions.json` (login sessions), `_auth.json` (the guests' password, set from the app and stored salted + SHA-256) and `f/<id>` (the files).
 - An `HttpOnly`, HMAC-signed session cookie valid for 400 days, accepted only while the session exists in `_sessions.json`.
-- With every new version, bump `const V = "dripbox-N"` in `sw.js` so phones pick it up.
+- With every new version, bump `const V = "dribbit-N"` in `sw.js` so phones pick it up.
 
 ## Known limits
 
-- iPhone: no Share → Dripbox (Safari doesn't support Web Share Target). Firefox on desktop can't install PWAs.
+- iPhone: no Share → Dribbit (Safari doesn't support Web Share Target). Firefox on desktop can't install PWAs.
 - Sharing from the phone works only when installed from **Chrome**, not Brave.
 - Some in-app browsers block the clipboard; test in Chrome or Edge.
 

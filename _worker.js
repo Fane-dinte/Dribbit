@@ -1,4 +1,4 @@
-// Dripbox: a private drop box between your own devices.
+// Dribbit: a private drop box between your own devices.
 // Cloudflare Pages (advanced mode) + one R2 bucket bound as BUCKET + a PASS secret (the password you give out).
 // Optional ADMIN_PASS secret: logging in with it makes that device the owner, who sees every logged-in device,
 // can sign any of them out and can change the shared password from inside the app.

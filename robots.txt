@@ -4,4 +4,4 @@ Disallow: /api/
 Disallow: /f/
 Disallow: /s/
 
-Sitemap: https://dripbox.pages.dev/sitemap.xml
+Sitemap: https://dribbit.pages.dev/sitemap.xml
